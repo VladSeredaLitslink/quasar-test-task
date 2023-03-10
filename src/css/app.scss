@@ -1,0 +1,62 @@
+// app global css in SCSS form
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  &-lg {
+    max-width: 992px;
+  }
+  .q-field--outlined.q-field--rounded .q-field__control {
+    border-radius: 16px;
+  }
+  .q-field__native {
+    color: #84849a;
+  }
+  b {
+    color: #000034;
+  }
+}
+
+.b-radius {
+  &8 {
+    border-radius: 8px;
+  }
+  &10 {
+    border-radius: 10px;
+  }
+  &16 {
+    border-radius: 16px;
+  }
+  &32 {
+    border-radius: 32px;
+  }
+}
+
+.q-card {
+  padding: 24px;
+}
+
+.q-item__label {
+  font-size: 16px;
+}
+
+.fz {
+  &16 {
+    font-size: 16px;
+  }
+  &18 {
+    font-size: 18px;
+  }
+  &20 {
+    font-size: 20px;
+  }
+  &24 {
+    font-size: 24px;
+  }
+  &30 {
+    font-size: 30px;
+  }
+}
