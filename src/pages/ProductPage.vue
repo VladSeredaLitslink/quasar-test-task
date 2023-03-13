@@ -1,21 +1,20 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, computed } from "vue";
 import GuaranteedSafe from "components/GuaranteedSafe.vue";
 
 const slide = ref(1);
 
 const PRICE = 50;
-const price = ref(PRICE);
 const amount = ref(1);
 
-watch(amount, (val) => {
-  price.value = val * PRICE;
-});
+const price = computed(() => {
+   return amount.value * PRICE;
+})
 </script>
 <template>
-  <q-page class="container container-lg q-pa-xl">
+  <q-page class="container container-lg">
     <q-carousel
-      class="b-radius32 q-mb-lg"
+      class="product-carousel b-radius32 q-mb-lg"
       animated
       v-model="slide"
       arrows
@@ -73,9 +72,13 @@ watch(amount, (val) => {
     </div>
     <div class="row q-mb-xl">
       <div class="col-12 col-md-8 col-sm-8 q-mb-lg">
-        <guaranteed-safe title="Guaranteed Safe & Secure Checkout" />
+        <guaranteed-safe>
+          <template #title>
+            <span>Guaranteed <b>Safe</b> & <b>Secure</b> Checkout</span>
+          </template>
+        </guaranteed-safe>
       </div>
-      <div class="col-12 col-md-4 col-sm-4 q-pl-lg q-mb-lg">
+      <div class="col-12 col-md-4 col-sm-4 q-pl-lg q-mb-lg support-block">
         <q-card class="b-radius16">
           <q-card-section class="flex justify-around q-my-xs">
             <q-img width="63px" src="~assets/support.png" alt="support" />
@@ -115,3 +118,16 @@ watch(amount, (val) => {
     </div>
   </q-page>
 </template>
+
+<style lang="scss">
+.product-carousel {
+  @media screen and (max-width: 599.99px) {
+    height: 226px;
+  }
+}
+.support-block {
+  @media screen and (max-width: 599.99px) {
+    padding-left: 0;
+  }
+}
+</style>

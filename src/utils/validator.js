@@ -1,3 +1,39 @@
+function validateCreditCard(ccNumberNoDashes) {
+  // Remove spaces between numbers
+  ccNumberNoDashes = ccNumberNoDashes.replaceAll(' ','')
+
+  // The credit card number must be 16 digits in length
+  if (ccNumberNoDashes.length !== 16) {
+    return false;
+  }
+
+  // The credit card number must be composed of at least two different digits (i.e. all of the digits cannot be the same)
+  const obj = {};
+  for (let i = 0; i < ccNumberNoDashes.length; i++) {
+    obj[ccNumberNoDashes[i]] = true;
+  }
+  if (Object.keys(obj).length < 2) {
+    return false;
+  }
+
+  // The final digit of the credit card number must be even
+  if (ccNumberNoDashes[ccNumberNoDashes.length - 1] % 2 !== 0) {
+    return false;
+  }
+
+  // The sum of all the digits must be greater than 16
+  let sum = 0;
+  for (let i = 0; i < ccNumberNoDashes.length; i++) {
+    sum += Number(ccNumberNoDashes[i]);
+  }
+  if (sum <= 16) {
+    return false;
+  }
+
+  return true;
+}
+
+
 export function useValidator() {
   const isEmpty = (value) => {
     if (value === null || value === undefined || value === "") return true;
@@ -26,13 +62,7 @@ export function useValidator() {
     (val && val.length > 0) || "Enter a " + label;
 
   const creditCardValidator = (value) => {
-    //Check if the number contains only numeric value
-    //and is of between 13 to 19 digits
-    //TODO
-    const regexp =
-      /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
-
-    return regexp.test(value) || "Enter valid card number";
+    return validateCreditCard(value) || "Enter valid card number";
   };
 
   return {

@@ -1,12 +1,15 @@
 <script setup>
 import OrderSummary from "components/OrderSummary.vue";
 import GuaranteedSafe from "components/GuaranteedSafe.vue";
+import ExpandedCart from "components/ExpandedCart.vue";
 </script>
 
 <template>
-  <q-page class="container q-pa-xl">
+  <q-page class="container">
     <div class="row">
       <q-card class="col-12 col-md-7 b-radius16 q-mb-lg">
+        <expanded-cart class="q-mt-md"/>
+
         <q-card-section class="flex items-center column">
           <q-img
             class="q-mb-lg"
@@ -67,9 +70,16 @@ import GuaranteedSafe from "components/GuaranteedSafe.vue";
           </q-card>
         </q-card-section>
       </q-card>
-      <div class="col-12 col-md-5 q-pl-lg">
-        <order-summary class="q-mb-lg" />
-        <guaranteed-safe />
+      <div class="right-section col-12 col-md-5">
+        <order-summary
+          class="q-mb-lg"
+          v-if="$q.screen.width > $q.screen.sizes.md"
+        />
+        <guaranteed-safe>
+          <template #title>
+            <span>Secure SSL Encryption & Guaranteed Safe Checkout</span>
+          </template>
+        </guaranteed-safe>
       </div>
     </div>
   </q-page>

@@ -3,6 +3,23 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.q-page-container {
+  padding: 121px 40px 60px 40px !important;
+  @media screen and (max-width: 599.99px) {
+    padding: 91px 16px 16px 16px !important;
+    .q-card {
+      padding: 8px;
+    }
+  }
+}
+
+.right-section {
+  padding-left: 24px;
+  @media screen and (max-width: 599.99px) {
+    padding-left: 0;
+  }
+}
+
 .container {
   max-width: 1600px;
   margin: 0 auto;

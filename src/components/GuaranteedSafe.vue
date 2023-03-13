@@ -1,13 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
-
-defineProps({
-  title: {
-    type: String,
-    default: "Secure SSL Encryption & Guaranteed Safe Checkout",
-  },
-});
-
 const getImgUrl = (val) => {
   return new URL("../assets/" + val + ".png", import.meta.url).href;
 };
@@ -17,7 +8,7 @@ const getImgUrl = (val) => {
     <q-card-section class="flex items-center column">
       <div class="q-mb-lg flex items-center no-wrap">
         <q-icon class="q-mr-sm" size="sm" name="lock" />
-        <span>{{ title }}</span>
+        <slot name="title"></slot>
       </div>
       <div>
         <q-img

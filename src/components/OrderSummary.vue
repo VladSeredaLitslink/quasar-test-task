@@ -23,8 +23,8 @@ const discountCode = ref();
         </div>
         <b>€69.00</b>
       </div>
-      <div class="row">
-        <div class="col-9 q-pr-lg">
+      <div class="row q-mb-md">
+        <div class="col-sm-9 col-xs-12 q-pr-lg discount-input">
           <q-input
             rounded
             outlined
@@ -33,7 +33,7 @@ const discountCode = ref();
             label="Discount code"
           />
         </div>
-        <div class="col-3">
+        <div class="col-sm-3 col-xs-12">
           <q-btn
             class="b-radius16 fz16 full-width"
             style="height: 56px"
@@ -65,3 +65,11 @@ const discountCode = ref();
     </q-card-section>
   </q-card>
 </template>
+
+<style lang="scss">
+.discount-input {
+  @media screen and (max-width: 599.99px) {
+    padding-right: 0;
+  }
+}
+</style>

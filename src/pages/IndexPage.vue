@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useValidator } from "../utils/validator";
 import GuaranteedSafe from "components/GuaranteedSafe.vue";
 import OrderSummary from "components/OrderSummary.vue";
+import ExpandedCart from "components/ExpandedCart.vue";
 
 const { required, emailValidator, creditCardValidator } = useValidator();
 
@@ -32,37 +33,40 @@ const submit = () => {
 </script>
 
 <template>
-  <q-page class="q-py-xl container">
+  <q-page class="container">
     <div class="row">
       <q-card class="col-12 col-md-8 b-radius16">
         <q-card-section>
           <h4 class="text-bold q-mt-none"><b>Checkout</b></h4>
+          <expanded-cart/>
           <p class="fz20">
             Strong demand! Complete your order before it's too late!
           </p>
           <q-card class="bg-grey-2 q-my-lg b-radius16">
-            <div class="fz16">Your cart is reserved for 10:00 minutes.</div>
+            <q-card-section class="q-py-none">
+              <div class="fz16">Your cart is reserved for 10:00 minutes.</div>
+            </q-card-section>
           </q-card>
           <q-card class="b-radius16 q-my-lg">
             <q-card-section class="q-pt-none">
               <b class="fz20">Express Checkout</b>
             </q-card-section>
             <q-card-section class="q-py-none express-checkout">
-              <q-btn class="b-radius16 shop-pay"
+              <q-btn class="b-radius16 shop-pay q-mr-md q-mb-md"
                 ><img src="~assets/shopPay.png"
               /></q-btn>
-              <q-btn class="b-radius16 q-mx-md pay-pal"
+              <q-btn class="b-radius16 q-mr-md q-mb-md pay-pal"
                 ><img src="~assets/payPal.png"
               /></q-btn>
-              <q-btn class="b-radius16 google-pay"
+              <q-btn class="b-radius16 q-mb-md google-pay"
                 ><img src="~assets/googlePay.png"
               /></q-btn>
             </q-card-section>
           </q-card>
           <q-card class="b-radius16 q-my-lg bg-grey-2">
-            <q-card-section class="q-px-lg">
+            <q-card-section class="q-px-lg guarantee">
               <div class="row">
-                <div class="col-10 q-pr-md">
+                <div class="col-sm-10 col-xs-12  q-pr-md">
                   <div class="q-mb-sm">
                     <b class="fz20">Lifetime Warranty🔥</b>
                   </div>
@@ -71,13 +75,17 @@ const submit = () => {
                     your dream collections order for just $4.99
                   </span>
                 </div>
-                <div class="col-2 flex items-center">
+                <div class="col-sm-2 col-xs-6 flex items-center">
                   <q-btn
                     no-caps
                     class="b-radius10 fz16 full-width"
                     color="primary"
-                    >Add -<br />$4.99</q-btn
-                  >
+                    >
+                    <div class="btn-content">
+                      <div><span>Add -</span></div>
+                      <div>$4.99</div>
+                    </div>
+                  </q-btn>
                 </div>
               </div>
             </q-card-section>
@@ -139,11 +147,11 @@ const submit = () => {
                   </template>
                 </q-select>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-xs-12">
                 <q-input
                   rounded
                   outlined
-                  class="q-mb-xs q-mr-md"
+                  class="q-mb-xs q-mr-md mr-xs-none"
                   v-model="shippingAddress.firstName"
                   ref="firstNameRef"
                   lazy-rules
@@ -157,7 +165,7 @@ const submit = () => {
                   </template>
                 </q-input>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-xs-12">
                 <q-input
                   rounded
                   outlined
@@ -201,16 +209,16 @@ const submit = () => {
                   </template>
                 </q-input>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-xs-12">
                 <q-input
                   rounded
                   outlined
-                  class="q-mb-lg q-mr-md"
+                  class="q-mb-lg q-mr-md mr-xs-none"
                   v-model="shippingAddress.city"
                   label="City"
                 />
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-xs-12">
                 <q-input
                   rounded
                   outlined
@@ -303,11 +311,11 @@ const submit = () => {
                         </template>
                       </q-select>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6 col-xs-12">
                       <q-input
                         rounded
                         outlined
-                        class="q-mb-lg q-mr-md"
+                        class="q-mb-lg q-mr-md mr-xs-none"
                         v-model="shippingAddress.firstName"
                         label="First Name"
                       >
@@ -316,7 +324,7 @@ const submit = () => {
                         </template>
                       </q-input>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6 col-xs-12">
                       <q-input
                         rounded
                         outlined
@@ -355,16 +363,16 @@ const submit = () => {
                         </template>
                       </q-input>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6 col-xs-12">
                       <q-input
                         rounded
                         outlined
-                        class="q-mb-lg q-mr-md"
+                        class="q-mb-lg q-mr-md mr-xs-none"
                         v-model="shippingAddress.city"
                         label="City"
                       />
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6 col-xs-12">
                       <q-input
                         rounded
                         outlined
@@ -380,12 +388,15 @@ const submit = () => {
           </q-card-section>
         </q-card-section>
       </q-card>
-      <div class="col-12 col-md-4 q-pl-lg">
+      <div class="right-section col-12 col-md-4">
         <order-summary
-          class="desktop-only"
           v-if="$q.screen.width > $q.screen.sizes.md"
         />
-        <guaranteed-safe class="q-my-lg" />
+        <guaranteed-safe class="q-my-lg">
+          <template #title>
+            <span>Secure SSL Encryption & Guaranteed Safe Checkout</span>
+          </template>
+        </guaranteed-safe>
         <q-card class="b-radius16 q-mb-lg">
           <q-card-section>
             <div class="q-mb-md fz18"><b>The ultimate jewellery club</b></div>
@@ -557,6 +568,7 @@ const submit = () => {
               class="b-radius10 full-width"
               color="primary"
               size="lg"
+              :disable="!acceptPolicy"
               no-caps
               @click="submit"
               >Complete Purchase
@@ -585,6 +597,26 @@ const submit = () => {
   .google-pay {
     background: rgba(234, 64, 50, 0.1);
     border: 1px solid rgba(234, 64, 50, 0.6);
+  }
+}
+.mr-xs-none {
+  @media screen and (max-width: 599.99px) {
+    margin-right: 0;
+  }
+}
+.guarantee {
+  .q-btn {
+    min-width: 80px;
+    @media screen and (max-width: 599.99px) {
+      margin-top: 14px;
+    }
+  }
+  .btn-content {
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 599.99px) {
+      flex-direction: row;
+    }
   }
 }
 </style>
