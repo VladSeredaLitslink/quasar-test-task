@@ -1,8 +1,3 @@
-<script setup>
-const getImgUrl = (val) => {
-  return new URL("../assets/" + val + ".png", import.meta.url).href;
-};
-</script>
 <template>
   <q-card class="b-radius16">
     <q-card-section class="flex items-center column">
@@ -15,9 +10,37 @@ const getImgUrl = (val) => {
           width="40px"
           height="24px"
           class="q-mr-sm"
-          v-for="i in 5"
-          :key="i"
-          :src="getImgUrl(`secure/${i}`)"
+          src="~assets/secure/1.png"
+        />
+        <q-img
+          width="40px"
+          height="24px"
+          class="q-mr-sm"
+          src="~assets/secure/2.png"
+        />
+        <q-img
+          width="40px"
+          height="24px"
+          class="q-mr-sm"
+          src="~assets/secure/3.png"
+        />
+        <q-img
+          width="40px"
+          height="24px"
+          class="q-mr-sm"
+          src="~assets/secure/4.png"
+        />
+        <q-img
+          width="40px"
+          height="24px"
+          class="q-mr-sm"
+          src="~assets/secure/5.png"
+        />
+        <q-img
+          width="40px"
+          height="24px"
+          class="q-mr-sm"
+          src="~assets/secure/6.png"
         />
       </div>
     </q-card-section>
