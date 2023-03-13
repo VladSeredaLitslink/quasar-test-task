@@ -23,7 +23,7 @@ const price = computed(() => {
       <q-carousel-slide :name="1" img-src="~assets/carousel/1.png" />
     </q-carousel>
     <q-card class="b-radius16">
-      <q-card-section class="flex items-center column">
+      <q-card-section class="flex items-center column q-pa-0">
         <div class="flex items-center q-mb-lg">
           <b class="flex items-center fz20">Price</b>
           <b class="fz30 q-mx-sm">${{ price }}</b>
@@ -35,22 +35,24 @@ const price = computed(() => {
           </div>
         </div>
         <div
-          class="flex bg-grey-2 items-center q-pa-md q-pl-xl q-pr-xl b-radius16"
+          class="flex bg-grey-2 justify-center items-center b-radius16 quantity-block"
         >
           <b class="fz20">Quantity:</b>
-          <q-btn
-            class="b-radius10 q-mx-lg"
-            padding="md"
-            @click="amount && amount--"
-            icon="remove"
-          />
-          <b class="fz20">{{ amount }}</b>
-          <q-btn
-            class="b-radius10 q-ml-lg"
-            padding="md"
-            @click="amount++"
-            icon="add"
-          />
+          <div class="flex items-center">
+            <q-btn
+              class="b-radius10 q-mx-lg"
+              padding="md"
+              @click="amount && amount--"
+              icon="remove"
+            />
+            <b class="fz20">{{ amount }}</b>
+            <q-btn
+              class="b-radius10 q-ml-lg"
+              padding="md"
+              @click="amount++"
+              icon="add"
+            />
+          </div>
         </div>
       </q-card-section>
     </q-card>
@@ -120,6 +122,16 @@ const price = computed(() => {
 </template>
 
 <style lang="scss">
+.quantity-block {
+  padding: 24px;
+  width: 580px;
+  @media screen and (max-width: 1023.99px) {
+    width: auto;
+  }
+  @media screen and (max-width: 599.99px) {
+    padding: 24px 12px;
+  }
+}
 .product-carousel {
   @media screen and (max-width: 599.99px) {
     height: 226px;
